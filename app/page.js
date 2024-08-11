@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { collection, doc, firestore, getDoc, query, setDoc } from "firebase/firestore"; // check for error later 
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Modal, Stack, TextField, Typography } from "@mui/material";
 
 export default function Home() {
   
@@ -68,7 +68,6 @@ export default function Home() {
     updateInventory();
   }, []);
 
-
   // handle open and close 
   const handleOpen = () => {
     setOpen(true);
@@ -77,20 +76,61 @@ export default function Home() {
     setOpen(false);
   }
 
-  
+ //flexDirection="column"
   return (
-    <Box>
-      <Typography variant="h1">Inventory Managment</Typography>
-      {
-        inventory.forEach((item)=> {
-        return(
-          <Box>
-        {item.name}
-        {item.count}
+    <Box width="100vw" height="100vh" display="flex" alignItems="center" justifyContent="center" gap={2}>
+      <Modal open={open}onClose={handleClose}>
+        <Box
+          postion="absolute" top="50%" left="50%" 
+          width={400}
+          bgcolor={"white"}
+          border="2px solid black"
+          boxShadow={24}
+          padding={4}
+          display="flex"
+          flexDirection="column" 
+          gap={3}
+          sx={{
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          <Typography variant="h6">Add Item</Typography>
+          <Stack width="100%" direction="row" spacing={2}>
+            <TextField
+            variant="ouiutlined"
+            fullWidth
+            value={itemName}
+            onChange={(e) =>{
+              setItemName(e.target.value)
+            }}
+            />
+            <Button
+            variant= "outlined"
+            onClick={() => {
+              addItem(itemName);
+              setItemName("");
+              handleClose();
+            }}
+            >
+              Add Item
+            </Button>
+          </Stack>
+        </Box>
+      </Modal>
+      <Button variant="contained" onClick={()=>{
+        handleOpen();
+      }}
+      >
+        Add New Item
+      </Button>
+      <Box border="1px solid black">
+        <Box
+        width = '800px'
+        height = '100px'
+        bgcolor= "#ADD8E6"
+        ></Box>
       </Box>
-      )
-      })
-    }
+      
     </Box>
   )
 
