@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { collection, doc, firestore, getDoc, query, setDoc } from "firebase/firestore"; // check for error later 
 import { Box, Button, Modal, Stack, TextField, Typography } from "@mui/material";
+import { ST } from "next/dist/shared/lib/utils";
 
 export default function Home() {
   
@@ -128,10 +129,43 @@ export default function Home() {
         width = '800px'
         height = '100px'
         bgcolor= "#ADD8E6"
-        ></Box>
-      </Box>
-      
+        display= 'flex'
+        alignItems='center'
+        justifyContent='center'
+        >
+        <Typography variant="h2" color = '#333'>
+          Inventory Items
+        </Typography>
+        </Box>
+      <Stack width = '800px' height = '300px' spacing = {2} overflow='auto'>
+        {
+          inventory.map(({name, quantity})=>{
+            <Box key ={name} width = '100%' 
+            minHeight = '150px'
+            display = 'flex'
+            allignItems = 'center'
+            justifyContent = 'space-between'
+            bgcolor="#f0f0f0"
+            padding={5}
+            >
+              <Typography variant = 'h3' color = '#333' textAllign="center">
+                {name.charAt(0).toUpperCase() + name.slice(1)}
+              </Typography>
+              <Typography variant = 'h3' color = '#333' textAllign="center">
+                {quantity}
+              </Typography>
+              <Button variant = "contained" 
+              onClick={() => {
+                removeItem(name);
+              }}
+              >
+                Remove
+              </Button>
+            </Box>
+          })
+        }
+      </Stack>
     </Box>
+  </Box>
   )
-
 }
