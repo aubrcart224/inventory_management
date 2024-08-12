@@ -1,8 +1,9 @@
+### STILL A WORK IN PROGRESS UPDATES WILL ROLEOUT DONT WORRY
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 Goal of this app is to make a database using firebase. That is all thank you. 
-
-### STILL A WORK IN PROGRESS UPDATES WILL ROLEOUT DONT WORRY
 
 ## Getting Started
 
