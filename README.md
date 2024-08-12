@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 Goal of this app is to make a database using firebase. That is all thank you. 
 
+### STILL A WORK IN PROGRESS UPDATES WILL ROLEOUT DONT WORRY
+
 ## Getting Started
 
 First, run the development server:
